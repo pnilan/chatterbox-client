@@ -15,21 +15,31 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
 
+
     // Fetch initial batch of messages
     App.startSpinner();
-    App.fetch(App.stopSpinner);
+    App.fetch();
 
-    // TODO: Make sure the app loads data from the API
-    // continually, instead of just once at the start.
+
+    // ==Steps to Complete==
+    // Continually invoke App.fetch to receive other users' posts
+    // Push returned data to messagesView?
+
   },
-
   fetch: function(callback = ()=>{}) {
-    Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log(data);
+    Messages.reset();
+    Parse.readAll(function(dataResponse, stringResponse) {
+      console.log(stringResponse);
+      //invoke a message method to add to data structure
+      for (var i = dataResponse.length - 1; i >= 0; i--) {
+        Messages.addTo(dataResponse[i]);
+      }
+      MessagesView.render();
+      App.stopSpinner();
 
-      // TODO: Use the data to update Messages and Rooms
-      // and re-render the corresponding views.
+      setTimeout(function() {
+        App.fetch();
+      }, 5000);
     });
   },
 

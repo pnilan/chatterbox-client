@@ -8,19 +8,31 @@ var MessagesView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+    // $(document).on('click', '.submit', handleClick);
   },
 
   render: function() {
-    // TODO: Render _all_ the messages.
+    var data = Messages.retrieveFrom();
+    $('#chats').html('');
+    for (var i = 0; i < data.length; i++) {
+      var msg = MessageView.render(data[i]);
+      $('#chats').append(msg);
+    }
   },
 
   renderMessage: function(message) {
-    // TODO: Render a single message.
+    var msg = MessageView.render(message);
+    $('#chats').prepend(message);
   },
 
   handleClick: function(event) {
     // TODO: handle a user clicking on a message
     // (this should add the sender to the user's friend list).
+    // $(document).on('click', '.submit', function() {
+    //   renderMessage(message);
+    // });
   }
 
 };
+
+

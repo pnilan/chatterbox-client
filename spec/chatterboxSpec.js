@@ -61,6 +61,17 @@ describe('chatterbox', function() {
         done();
       });
 
+      it('should return message data when a GET request is made', function() {
+        var result;
+        Parse.readAll((data) => {
+          console.log('data: ', data);
+          result = data;
+        });
+        console.log(result);
+        expect(Array.isArray(result)).to.be.true;
+        done();
+      });
+
     });
   });
 
@@ -85,7 +96,6 @@ describe('chatterbox', function() {
   describe('events', function() {
     it('should add a friend upon clicking their username', function() {
       sinon.spy(Friends, 'toggleStatus');
-
       App.initialize();
       MessagesView.renderMessage({
         username: 'Mel Brooks',
