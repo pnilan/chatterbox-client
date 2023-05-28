@@ -17,14 +17,21 @@ var RoomsView = {
 
   renderRoom: function(roomname) {
     // TODO: Render out a single room.
+    const unOrderedList = document.createElement('ul');
+    const list = document.createTextNode(message.roomname);
+    unOrderedList.appendChild(list);
+    const iDee = document.getElementById('roomname');
+    iDee.appendChild(list);
   },
 
+  //CONTROLLER CODE
   handleChange: function(event) {
     // TODO: Handle a user selecting a different room.
   },
 
   handleClick: function(event) {
     // TODO: Handle the user clicking the "Add Room" button.
+
   }
 
 };
