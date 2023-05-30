@@ -10,17 +10,36 @@ var MessagesView = {
     // when this view loads.
   },
 
-  render: function() {
-    // TODO: Render _all_ the messages.
+  render: function(room) {
+    var data = Messages.retrieveFrom();
+    $('#chats').html('');
+    for (var i = 0; i < data.length; i++) {
+      if (room && data[i].roomname !== Rooms._selected) {
+        continue;
+      }
+      var msg = MessageView.render(data[i]);
+      $('#chats').append(msg);
+      var username = data[i].username;
+      $('.' + data[i].username).on('click', {username: username}, MessagesView.handleClick);
+
+      if (Friends._data.includes(username)) {
+        $('.' + data[i].username).addClass('friend');
+      }
+    }
   },
 
   renderMessage: function(message) {
-    // TODO: Render a single message.
+    var msg = MessageView.render(message);
+    console.log(msg);
+    $('#chats').prepend(message);
   },
 
-  handleClick: function(event) {
-    // TODO: handle a user clicking on a message
-    // (this should add the sender to the user's friend list).
+  handleClick: function(event, username) {
+    event.preventDefault();
+    Friends.add(event.data.username);
+    $('.' + event.data.username).addClass('friend');
   }
 
 };
+
+
