@@ -25,6 +25,7 @@ var RoomsView = {
   },
 
   //CONTROLLER CODE
+  //CONTROLLER CODE
   handleChange: function(event) {
     console.log(event.data.room);
     Rooms.select(event.data.room);
@@ -32,6 +33,7 @@ var RoomsView = {
 
   handleClick: function(event) {
     // TODO: Handle the user clicking the "Add Room" button.
+
 
   }
 

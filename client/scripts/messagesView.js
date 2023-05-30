@@ -8,6 +8,7 @@ var MessagesView = {
   initialize: function() {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+    // $(document).on('click', '.submit', handleClick);
   },
 
   render: function(room) {
@@ -41,5 +42,8 @@ var MessagesView = {
   }
 
 };
+
+
+
 
 

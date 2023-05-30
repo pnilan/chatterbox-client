@@ -16,6 +16,7 @@ var App = {
     MessagesView.initialize();
 
 
+
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(() => {
@@ -25,7 +26,6 @@ var App = {
     });
 
   },
-
   fetch: function(callback = ()=>{}) {
     Messages.reset();
     Parse.readAll(function(dataResponse, stringResponse) {

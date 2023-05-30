@@ -36,3 +36,4 @@ var FormView = {
   }
 
 };
+console.log(FormView.handleSubmit(event));
